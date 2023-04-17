@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { config } from "./config";
 
 function User() {
   const params = useParams();
@@ -15,7 +16,7 @@ function User() {
   let loadData = async () => {
     setLoading(true)
     let user = await axios.get(
-      "http://localhost:3001/users"
+      `${config.api}/users`
     );
 
     setUser(user.data);
@@ -24,7 +25,7 @@ function User() {
 
   let userDelete=async(id) =>{
     try {
-      await axios.delete(`http://localhost:3001/users/${id}`)
+      await axios.delete(`${config.api}/users/${id}`)
       loadData()
       window.alert("userDelete");
     } catch (error) {

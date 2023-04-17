@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { config } from "./config";
 import "./App.css";
 function Userview() {
   const params = useParams();
@@ -13,7 +14,7 @@ useEffect(()=>{
 let loadUser =async()=>{
   try{
     let user = await axios.get(
-      `http://localhost:3001/users/${params.id}`
+      `${config.api}/users/${params.id}`
     );
 
 setUserData(user.data)

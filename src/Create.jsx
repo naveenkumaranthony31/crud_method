@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import { env } from "./config";
+import { config } from "./config";
 function Create() {
  const navigate=useNavigate()
   const formik = useFormik({
@@ -31,7 +31,7 @@ function Create() {
     },
 
     onSubmit: async (values) => {
-    let user = await axios.post("http://localhost:3001/userspost",values)
+    let user = await axios.post(`${config.api}/userspost`,values)
       navigate("/portal/users")
     },
   });

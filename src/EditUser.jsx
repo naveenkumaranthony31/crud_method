@@ -2,6 +2,7 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { config } from "./config";
 
 function EditUser() {
   const params=useParams()
@@ -33,7 +34,7 @@ function EditUser() {
       },
   
       onSubmit: async(values) => {
-       await axios.put(`http://localhost:3001/users/${params.id}`,values)
+       await axios.put(`${config.api}/users/${params.id}`,values)
       navigate("/portal/users")
       },
     });
